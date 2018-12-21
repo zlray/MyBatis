@@ -1,6 +1,6 @@
 package com.zl.mybatis.dao;
 
-import com.zl.mybatis.User;
+import com.zl.mybatis.com.zl.mybatis.pojo.User;
 
 import java.util.List;
 
