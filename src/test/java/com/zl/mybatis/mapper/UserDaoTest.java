@@ -1,6 +1,7 @@
-package com.zl.mybatis.dao;
+package com.zl.mybatis.mapper;
 
-import com.zl.mybatis.com.zl.mybatis.pojo.User;
+import com.zl.mybatis.mapper.UserDao;
+import com.zl.mybatis.pojo.User;
 import com.zl.mybatis.dao.impl.UserDaoImpl;
 
 import org.apache.ibatis.io.Resources;
@@ -19,6 +20,7 @@ public class UserDaoTest {
 
     public UserDao userDao;
     public SqlSession sqlSession;
+    private int i = 1;
 
     @Before
     public void setUp() throws Exception {
@@ -34,7 +36,7 @@ public class UserDaoTest {
 
     @Test
     public void queryUserById() {
-        System.out.println("查询id为1的用户：" + this.userDao.queryUserById("1"));
+        System.out.println("查询id为" + 1 + "的用户：" + this.userDao.queryUserById(1));
     }
 
     @Test
@@ -47,36 +49,36 @@ public class UserDaoTest {
 
     @Test
     public void insertUser() {
-//        User user = new User();
-//        user.setId("102");
-//        user.setAge(26);
-//        user.setBirthday(new Date("1990/09/02"));
-//        user.setName("磊磊");
-//        user.setPassword("123456");
-//        user.setSex(1);
-//        user.setUserName("嗯嗯");
-//
-//        this.userDao.insertUser(user);
-//
-//        this.sqlSession.commit();
+        i++;
+        User user = new User();
+        user.setId(i);
+        user.setUsername("zl" + i);
+        user.setPassword("123456");
+        user.setName("磊" + i);
+        user.setAge(26);
+        user.setSex(1);
+        user.setBirthday(new Date("1990/09/02"));
+        this.userDao.insertUser(user);
+        this.sqlSession.commit();
     }
 
     @Test
     public void updateUser() {
         User user = new User();
-        user.setId("203");
-        user.setBirthday(new Date());
-        user.setName("萱萱");
-        user.setPassword("654321");
+        user.setId(1);
+        user.setUsername("zl");
+        user.setPassword("123456");
+        user.setName("磊");
+        user.setAge(62);
         user.setSex(1);
-        user.setUserName("哦哦");
+        user.setBirthday(new Date());
         this.userDao.updateUser(user);
         this.sqlSession.commit();
     }
 
     @Test
     public void deleteUser() {
-//        this.userDao.deleteUser("4");
-//        this.sqlSession.commit();
+        this.userDao.deleteUser(9);
+        this.sqlSession.commit();
     }
 }

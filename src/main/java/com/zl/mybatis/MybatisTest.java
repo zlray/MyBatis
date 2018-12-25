@@ -1,6 +1,6 @@
 package com.zl.mybatis;
 
-import com.zl.mybatis.com.zl.mybatis.pojo.User;
+import com.zl.mybatis.pojo.User;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

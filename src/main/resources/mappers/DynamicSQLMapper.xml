@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mappers:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="com.zl.mybatis.mapper.DynamicSQLMapper">
+
+    <select id="queryUserList" resultType="com.zl.mybatis.pojo.User">
+        select * from tb_user WHERE sex = 1
+        <if test="username != null and username.trim() != '' ">
+            and username like '%${username}%'
+        </if>
+    </select>
+
+
+    <select id="queryUserListByNameOrAge" resultType="com.zl.mybatis.pojo.User">
+        select * from tb_user WHERE sex=1
+        <!--
+        1.一旦有条件成立的when，后续的when则不会执行
+        2.当所有的when都不执行时,才会执行otherwise
+        -->
+        <choose>
+            <when test="username!=null and username.trim()!=''">
+                and username like '%${username}%'
+            </when>
+            <when test="age!=null">
+                and age = #{age}
+            </when>
+            <otherwise>
+                and name='insert'
+            </otherwise>
+        </choose>
+    </select>
+
+</mapper>

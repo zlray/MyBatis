@@ -1,7 +1,7 @@
 package com.zl.mybatis.dao.impl;
 
-import com.zl.mybatis.com.zl.mybatis.pojo.User;
-import com.zl.mybatis.dao.UserDao;
+import com.zl.mybatis.pojo.User;
+import com.zl.mybatis.mapper.UserDao;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -15,8 +15,10 @@ public class UserDaoImpl implements UserDao {
         this.sqlSession = sqlSession;
     }
 
-    public User queryUserById(String id) {
+
+    public User queryUserById(int id) {
         return this.sqlSession.selectOne("UserDao.queryUserById", id);
+
     }
 
     public List<User> queryUserAll() {
@@ -28,10 +30,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     public void updateUser(User user) {
-        this.sqlSession.insert("UserDao.insertUser", user);
+        this.sqlSession.update("UserDao.updateUser", user);
     }
 
-    public void deleteUser(String id) {
-        this.sqlSession.delete("UserDao.insertUser", id);
+    public void deleteUser(int id) {
+        this.sqlSession.delete("UserDao.deleteUser", id);
     }
 }

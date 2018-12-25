@@ -1,6 +1,7 @@
-package com.zl.mybatis.dao;
+package com.zl.mybatis.mapper;
 
-import com.zl.mybatis.com.zl.mybatis.pojo.User;
+import com.zl.mybatis.mapper.UserMapper;
+import com.zl.mybatis.pojo.User;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -19,14 +20,14 @@ public class UserMapperTest {
     public UserMapper userMapper;
 
     @Before
-    public void set() throws IOException {
+    public void setUp() throws IOException {
         // 指定配置文件
         String resource = "mybatis-config.xml";
         // 读取配置文件
         InputStream inputStream = Resources.getResourceAsStream(resource);
         // 构建sqlSessionFactory
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        // 获取sqlSession
+        // 获取sqlSession,自动提交
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
         // 1. 映射文件的命名空间（namespace）必须是mapper接口的全路径
@@ -38,7 +39,7 @@ public class UserMapperTest {
 
     @Test
     public void login() {
-        System.out.println(this.userMapper.login("hj", "123456"));
+        System.out.println(this.userMapper.login("zl", "123456"));
     }
 
     @Test
@@ -52,6 +53,7 @@ public class UserMapperTest {
 
     @Test
     public void queryUserById() {
+        System.out.println("查询id为" + 1 + "的用户：" + this.userMapper.queryUserById(1));
     }
 
     @Test
@@ -65,12 +67,12 @@ public class UserMapperTest {
     @Test
     public void insertUser() {
         User user = new User();
-        user.setAge(20);
-        user.setBirthday(new Date());
+        user.setUsername("bigGod222");
         user.setName("大神");
         user.setPassword("123456");
+        user.setAge(20);
         user.setSex(2);
-        user.setUserName("bigGod222");
+        user.setBirthday(new Date());
         this.userMapper.insertUser(user);
         System.out.println(user.getId());
     }
@@ -82,13 +84,13 @@ public class UserMapperTest {
         user.setName("静静");
         user.setPassword("123456");
         user.setSex(0);
-        user.setUserName("Jinjin");
-        user.setId("10");
+        user.setUsername("Jinjin");
+        user.setId(100);
         this.userMapper.updateUser(user);
     }
 
     @Test
     public void deleteUserById() {
-        this.userMapper.deleteUserById("1");
+        this.userMapper.deleteUserById(1);
     }
 }

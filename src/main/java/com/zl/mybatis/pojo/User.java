@@ -1,11 +1,11 @@
-package com.zl.mybatis.com.zl.mybatis.pojo;
+package com.zl.mybatis.pojo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
 
-    private String id;
+    private int id;
     private String username;
     private String password;
     private String name;
@@ -15,19 +15,20 @@ public class User {
     private String created;
     private String updated;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String userName) {
+
+    public void setUsername(String username) {
         this.username = username;
     }
 

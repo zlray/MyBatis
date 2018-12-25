@@ -1,6 +1,6 @@
-package com.zl.mybatis.dao;
+package com.zl.mybatis.mapper;
 
-import com.zl.mybatis.com.zl.mybatis.pojo.User;
+import com.zl.mybatis.pojo.User;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -11,11 +11,11 @@ public interface UserMapper {
     /**
      * 登录（直接使用注解指定传入参数名称）
      *
-     * @param userName
+     * @param username
      * @param password
      * @return
      */
-    User login(@Param("username") String userName, @Param("password") String password);
+    User login(@Param("username") String username, @Param("password") String password);
 
     /**
      * 根据表名查询用户信息（直接使用注解指定传入参数名称）
@@ -31,7 +31,7 @@ public interface UserMapper {
      * @param id
      * @return
      */
-    User queryUserById(Long id);
+    User queryUserById(int id);
 
     /**
      * 查询所有用户信息
@@ -59,6 +59,6 @@ public interface UserMapper {
      *
      * @param id
      */
-    void deleteUserById(String id);
+    void deleteUserById(int id);
 
 }

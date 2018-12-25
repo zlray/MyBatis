@@ -1,6 +1,6 @@
-package com.zl.mybatis.dao;
+package com.zl.mybatis.mapper;
 
-import com.zl.mybatis.com.zl.mybatis.pojo.User;
+import com.zl.mybatis.pojo.User;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public interface UserDao {
      * @param id
      * @return
      */
-    User queryUserById(String id);
+    User queryUserById(int id);
 
     /**
      * 查询所有用户信息
@@ -40,6 +40,6 @@ public interface UserDao {
      *
      * @param id
      */
-    void deleteUser(String id);
+    void deleteUser(int id);
 
 }
