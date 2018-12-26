@@ -24,4 +24,12 @@ public interface DynamicSQLMapper {
      */
     List<User> queryUserListByNameOrAge(@Param("username") String username,@Param("age") Integer age);
 
+
+    /**
+     * 按多个Id查询
+     * @param ids
+     * @return
+     */
+    List<User> queryUserListByIds(@Param("ids") String[] ids);
+
 }

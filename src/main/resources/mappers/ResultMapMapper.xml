@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mappers:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="com.zl.mybatis.mapper.ResultMapMapper">
+
+    <!--
+        type:返回的结果集对应java的实体类型
+        id:resultMap 的唯一标示
+        autoMapping 默认完成映射，如果已经开启驼峰匹配，可以解决驼峰匹配
+    -->
+    <resultMap id="resultUser" type="com.zl.mybatis.pojo.User" autoMapping="true">
+        <!--
+            指定主键
+            column:数据库中的列名
+            property:java实体类中属性名
+        -->
+        <id column="id" property="id"></id>
+
+        <!--
+            定义普通属性
+        -->
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="name" property="name"></result>
+        <result column="age" property="age"></result>
+        <result column="sex" property="sex"></result>
+        <result column="birthday" property="birthday"></result>
+        <result column="created" property="created"></result>
+        <result column="updated" property="updated"></result>
+    </resultMap>
+
+    <select id="queryUserByTableName" resultMap="resultUser">
+        select * from ${tableName}
+    </select>
+
+</mapper>

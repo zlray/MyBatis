@@ -1,5 +1,6 @@
 package com.zl.mybatis.pojo;
 
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,8 +10,8 @@ public class User {
     private String username;
     private String password;
     private String name;
-    private Integer age;
-    private Integer sex;
+    private int age;
+    private int sex;
     private Date birthday;
     private String created;
     private String updated;
@@ -52,7 +53,7 @@ public class User {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -60,7 +61,7 @@ public class User {
         return sex;
     }
 
-    public void setSex(Integer sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 

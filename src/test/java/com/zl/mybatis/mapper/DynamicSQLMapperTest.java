@@ -34,6 +34,13 @@ public class DynamicSQLMapperTest {
         for (User user : users) {
             System.out.println(user);
         }
+    }
 
+    @Test
+    public void queryUserListByIds(){
+        List<User> users = mDynamicSQLMapper.queryUserListByIds(new String[]{"1","2"});
+        for (User user : users) {
+            System.out.println(user);
+        }
     }
 }

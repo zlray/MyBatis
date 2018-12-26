@@ -32,4 +32,12 @@
         </choose>
     </select>
 
+
+    <select id="queryUserListByIds" resultType="com.zl.mybatis.pojo.User">
+        select * from tb_user where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
 </mapper>
